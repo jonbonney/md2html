@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD2HTML - Convert Markdown to HTML</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>MD2HTML</h1>
+            </div>
+            <nav>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="https://buymeacoffee.com/jonbonney" class="coffee-link" target="_blank">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="editor-container">
+            <!-- Left Column - Input -->
+            <div class="editor-column">
+                <div class="editor-tabs">
+                    <button class="tab active" data-tab="markdown">Markdown</button>
+                    <button class="tab" data-tab="css">CSS</button>
+                </div>
+                <div class="editor-content">
+                    <div class="editor markdown-editor active" data-content="markdown">
+                        <textarea id="markdown-input" placeholder="Enter your Markdown here...">
+# Welcome to MD2HTML! 👋
+
+This is a live preview of Markdown formatting. Feel free to edit this text to see how Markdown works!
+
+## Text Formatting
+
+You can make text **bold**, *italic*, or ***both***. You can also add ~~strikethrough~~ to your text.
+
+## Links and Images
+
+[Visit my GitHub](https://github.com/jonbonney) or check out this image:
+![Markdown Logo](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)
+
+## Lists
+
+### Unordered List
+* First item
+* Second item
+  * Nested item
+  * Another nested item
+* Third item
+
+### Ordered List
+1. First step
+2. Second step
+3. Third step
+
+## Code Examples
+
+Inline code: `const greeting = "Hello, World!";`
+
+```javascript
+// Code block with syntax highlighting
+function welcomeUser(name) {
+    return `Hello, ${name}! 👋`;
+}
+```
+
+## Blockquotes
+
+> "Markdown is what plain text should have been from the beginning"
+> 
+> You can have multiple lines in blockquotes
+>> And even nest them!
+
+## Tables
+
+| Feature | Support |
+|---------|---------|
+| Tables | ✅ |
+| Lists | ✅ |
+| Code Blocks | ✅ |
+| Math | ✅ |
+
+---
+
+## Additional Features
+
+You can also use:
+* Task lists
+  - [x] Like this
+  - [ ] And this
+* Emoji shortcuts :rocket: :heart: :markdown:
+* And even HTML for more <sup>advanced</sup> formatting
+
+Try editing this text to see how the HTML preview updates in real-time!</textarea>
+                    </div>
+                    <div class="editor css-editor" data-content="css">
+                        <textarea id="css-input" placeholder="Enter your custom CSS here...">.markdown-content {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.markdown-content h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: var(--text-tertiary);
+}
+
+.markdown-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--text-tertiary);
+}
+
+.markdown-content p {
+    margin-bottom: 1em;
+}
+
+.markdown-content code {
+    background-color: var(--bg-tertiary);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.markdown-content pre {
+    background-color: var(--bg-tertiary);
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+.markdown-content a {
+    color: var(--button-bg);
+    text-decoration: none;
+}
+
+.markdown-content a:hover {
+    text-decoration: underline;
+}
+
+.markdown-content ul, .markdown-content ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+}
+
+.markdown-content blockquote {
+    border-left: 4px solid var(--border-color);
+    padding-left: 1em;
+    margin: 1em 0;
+    color: var(--text-secondary);
+}</textarea>
+                    </div>
+                </div>
+                <div class="control-panel">
+                    <input type="file" id="upload-markdown" accept=".md, .markdown, .txt" class="file-input" aria-label="Upload Markdown file">
+                    <label for="upload-markdown" class="upload-button">Upload Markdown</label>
+                    <button id="download-markdown">Download Markdown</button>
+                    <button id="copy-markdown">Copy to Clipboard</button>
+                </div>
+                <div class="cheat-sheet">
+                    <h3>Markdown Cheat Sheet</h3>
+                    <div class="cheat-sheet-content">
+                        <p># Heading 1</p>
+                        <p>## Heading 2</p>
+                        <p>**Bold Text**</p>
+                        <p>*Italic Text*</p>
+                        <p>[Link](url)</p>
+                        <p>![Image](url)</p>
+                        <p>- List Item</p>
+                        <p>1. Numbered Item</p>
+                        <p>```code block```</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Output -->
+            <div class="editor-column">
+                <div class="editor-tabs">
+                    <button class="tab active" data-tab="rendered">Rendered</button>
+                    <button class="tab" data-tab="html">HTML</button>
+                </div>
+                <div class="editor-content">
+                    <div class="editor rendered-preview active" data-content="rendered">
+                        <div id="preview" class="markdown-content"></div>
+                    </div>
+                    <div class="editor html-editor" data-content="html">
+                        <textarea id="html-output" readonly placeholder="HTML output will appear here..."></textarea>
+                    </div>
+                </div>
+                <div class="control-panel">
+                    <button id="download-html">Download HTML</button>
+                    <button id="copy-html">Copy to Clipboard</button>
+                </div>
+                <div class="cheat-sheet">
+                    <h3>HTML Cheat Sheet</h3>
+                    <div class="cheat-sheet-content">
+                        <p>&lt;h1&gt;Heading 1&lt;/h1&gt;</p>
+                        <p>&lt;h2&gt;Heading 2&lt;/h2&gt;</p>
+                        <p>&lt;strong&gt;Bold Text&lt;/strong&gt;</p>
+                        <p>&lt;em&gt;Italic Text&lt;/em&gt;</p>
+                        <p>&lt;a href="url"&gt;Link&lt;/a&gt;</p>
+                        <p>&lt;img src="url" alt="Image"&gt;</p>
+                        <p>&lt;ul&gt;&lt;li&gt;List Item&lt;/li&gt;&lt;/ul&gt;</p>
+                        <p>&lt;ol&gt;&lt;li&gt;Numbered Item&lt;/li&gt;&lt;/ol&gt;</p>
+                        <p>&lt;pre&gt;&lt;code&gt;code block&lt;/code&gt;&lt;/pre&gt;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="markdown-guide">
+            <h2>Markdown Guide</h2>
+            <div class="guide-content">
+                <div class="guide-section">
+                    <h3>Introduction to Markdown</h3>
+                    <p>Markdown is a lightweight markup language that allows you to write formatted content using plain text. It's designed to be easy to read and write, making it perfect for creating documentation, README files, and blog posts. The syntax is intuitive and focuses on content rather than formatting.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Basic Text Formatting</h3>
+                    <p>To emphasize text in Markdown, you have several options:</p>
+                    <ul>
+                        <li>For <strong>bold text</strong>, surround your words with double asterisks: <code>**bold text**</code></li>
+                        <li>For <em>italic text</em>, use single asterisks: <code>*italic text*</code></li>
+                        <li>For text that is both <strong><em>bold and italic</em></strong>, use three asterisks: <code>***bold and italic***</code></li>
+                    </ul>
+                    <p>You can also use underscores instead of asterisks: <code>_italic_</code> and <code>__bold__</code>.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Headers</h3>
+                    <p>Headers are created using the hash symbol (#). The number of hashes indicates the header level:</p>
+                    <pre><code># Heading 1 (Largest)
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6 (Smallest)</code></pre>
+                    <p>Use headers to organize your content hierarchically. It's good practice to have only one H1 (#) per document, typically at the top.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Lists</h3>
+                    <p>Markdown supports both unordered (bullet) and ordered (numbered) lists:</p>
+                    <p>For unordered lists, start each line with either *, -, or +:</p>
+                    <pre><code>* First item
+* Second item
+* Third item</code></pre>
+                    <p>For ordered lists, use numbers:</p>
+                    <pre><code>1. First step
+2. Second step
+3. Third step</code></pre>
+                    <p>You can create nested lists by indenting with spaces:</p>
+                    <pre><code>* Main item
+    * Sub-item
+    * Another sub-item
+* Next main item</code></pre>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Links and Images</h3>
+                    <p>Creating links is straightforward:</p>
+                    <pre><code>[Link text](https://www.example.com)</code></pre>
+                    <p>You can also add titles that appear on hover:</p>
+                    <pre><code>[Link text](https://www.example.com "Hover text")</code></pre>
+                    <p>Images work similarly, just add an exclamation mark at the start:</p>
+                    <pre><code>![Alt text](image-url.jpg "Optional title")</code></pre>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Code Blocks</h3>
+                    <p>For inline code, use single backticks: <code>`code`</code></p>
+                    <p>For code blocks, use triple backticks or indent with 4 spaces:</p>
+                    <pre><code>```
+function example() {
+    return "Hello, World!";
+}
+```</code></pre>
+                    <p>You can also specify the programming language for syntax highlighting:</p>
+                    <pre><code>```javascript
+function example() {
+    return "Hello, World!";
+}
+```</code></pre>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Blockquotes</h3>
+                    <p>Create blockquotes using the > symbol:</p>
+                    <pre><code>> This is a blockquote
+> It can span multiple lines
+> 
+> And can contain **formatted** text</code></pre>
+                    <p>Blockquotes can be nested:</p>
+                    <pre><code>> Main quote
+>> Nested quote
+>>> Deeper nested quote</code></pre>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Tables</h3>
+                    <p>Create tables using pipes and hyphens:</p>
+                    <pre><code>| Header 1 | Header 2 |
+|----------|-----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |</code></pre>
+                    <p>You can align columns using colons in the separator line:</p>
+                    <pre><code>| Left | Center | Right |
+|:-----|:------:|------:|
+| Left | Center | Right |</code></pre>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Advanced Tips</h3>
+                    <ul>
+                        <li>Use backslash (\) to escape Markdown characters: \*not italic\*</li>
+                        <li>Create horizontal rules with three hyphens, asterisks, or underscores: ---</li>
+                        <li>Use HTML when you need more complex formatting</li>
+                        <li>Keep your Markdown clean and consistent for better readability</li>
+                        <li>Preview your Markdown as you write to ensure proper formatting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Jon Bonney 2025 MD2HTML - Convert Markdown to HTML</p>
+        <a href="https://jonbonney.com">jonbonney.com</a>
+    </footer>
+    <script src="theme.js"></script>
+    <script src="editor.js" type="module"></script>
+</body>
+</html> 
